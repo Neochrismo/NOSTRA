@@ -3,7 +3,7 @@ import './App.css'
 import NavBar from './navbar/NavBar'
 import Signup from './navbar/Signup-login/Signup'
 import Login from './navbar/Signup-login/Login'
-import CerealsPage from './ProductCards/FoodCrops/Cereals'
+import FoodCrops from './ProductCards/FoodCrops/FoodCrops'
 import Home from './Home/Home'
 
 
@@ -16,7 +16,7 @@ function App() {
       <Route path="/" element={<Home />} />
     <Route path="/signup" element={<Signup />} />
     <Route path="/login" element={<Login />} />
-    <Route path="/category/food-crops" element={<CerealsPage />} />
+    <Route path="/category/food-crops" element={<FoodCrops />} />
     </Routes>
     </>
   )

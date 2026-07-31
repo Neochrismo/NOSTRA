@@ -60,9 +60,9 @@ function CategoryPreview() {
 
           {/* Horizontal scroll row of product cards */}
           <div className="flex gap-4 overflow-x-auto border border-t-0 rounded-b p-4 bg-white">
-            {category.images.map((img, index) => (
+            {category.images.map((img, sampleQueries) => (
               <Link
-                key={index}
+                key={sampleQueries}
                 to={`/category/${category.slug}`}
                 className="flex-shrink-0 w-40 border rounded hover:shadow-md transition"
               >
