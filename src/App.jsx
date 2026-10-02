@@ -12,7 +12,7 @@ import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import { ToastProvider } from "./context/ToastContext";
-import { WishlistProvider } from "./context/WishlistContext";
+import { WishlistProvider } from "./context/WishListContext";
 import WishlistPage from "./Pages/WishListPage";
 import OrderHistory from "./Pages/OrderHistory";
 
