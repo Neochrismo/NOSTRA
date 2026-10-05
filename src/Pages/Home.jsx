@@ -62,7 +62,7 @@ function Home() {
 
           <ProductSection
             title="Food Crops"
-            products={foodCrops.slice(0, 5)}
+            products={foodCrops.slice(0, 8)}
             viewAllLink="/food-crops"
           />
 

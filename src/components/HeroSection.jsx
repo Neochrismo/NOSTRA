@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import categories from '../data/categories';
 
 const ACCESS_KEY = 'GbbmBW3YZQRpr3y6IiQYQr4TmlV1i1axiEtq4pNWrkY';
@@ -9,7 +9,6 @@ function HeroSection() {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchImages() {
@@ -39,36 +38,8 @@ function HeroSection() {
 
   return (
     <div className="w-full max-w-7xl mx-auto my-2 sm:my-4 px-2 sm:px-4">
-      {/* MOBILE & TABLET CATEGORY DROPDOWN */}
-      <div className="lg:hidden mb-3">
-        <select
-          onChange={(e) => e.target.value && navigate(e.target.value)}
-          defaultValue=""
-          className="w-full p-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
-        >
-          <option value="" disabled>
-            Select a Category...
-          </option>
-          {categories.map((cat) => (
-            <optgroup key={cat.slug} label={cat.name}>
-              <option value={`/category/${cat.slug}`}>
-                All {cat.name}
-              </option>
-              {(cat.subCategory || []).map((sub) => (
-                <option
-                  key={sub.slug}
-                  value={`/category/${cat.slug}/${sub.slug}`}
-                >
-                  └ {sub.name}
-                </option>
-              ))}
-            </optgroup>
-          ))}
-        </select>
-      </div>
-
       <div className="flex flex-col lg:flex-row w-full rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm">
-        {/* LEFT SIDE — Categories (Desktop Only) */}
+        {/* LEFT SIDE — Categories (Desktop Only - Hidden on Mobile) */}
         <div
           className="hidden lg:block lg:w-1/4 relative p-4 bg-white z-20 border-r border-gray-100"
           onMouseLeave={() => setActiveCategory(null)}
@@ -128,7 +99,7 @@ function HeroSection() {
           )}
         </div>
 
-        {/* CENTER — Image Carousel */}
+        {/* CENTER — Image Carousel (Full width on Mobile) */}
         <div className="w-full lg:w-2/4 relative aspect-[16/9] sm:h-[320px] lg:h-[360px] bg-gray-100 flex flex-col justify-between overflow-hidden">
           {images.length > 0 ? (
             <>
@@ -167,8 +138,8 @@ function HeroSection() {
           )}
         </div>
 
-        {/* RIGHT SIDE — Action Links (Desktop Sidebar + Mobile Quick Actions) */}
-        <div className="w-full lg:w-1/4 p-3 sm:p-4 bg-white border-t lg:border-t-0 lg:border-l border-gray-100 flex flex-row lg:flex-col justify-center gap-3">
+        {/* RIGHT SIDE — Action Links (Desktop Only - Hidden on Mobile) */}
+        <div className="hidden lg:flex w-full lg:w-1/4 p-3 sm:p-4 bg-white border-t lg:border-t-0 lg:border-l border-gray-100 flex-row lg:flex-col justify-center gap-3">
           <Link
             to="/sell"
             className="flex-1 lg:flex-none bg-green-600 hover:bg-green-700 text-white font-medium text-center py-2.5 rounded-lg transition-colors shadow-xs text-xs sm:text-sm"
